@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests"
+    />
+    <meta name="referrer" content="no-referrer" />
+    <meta
+      name="description"
+      content="Agenda completa del Mundial 2026 con horarios de Argentina y canales disponibles."
+    />
+    <title>M26 Agenda | Mundial 2026 en Argentina</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#inicio" aria-label="Ir al inicio">
+        <span class="brand-mark">26</span>
+        <span>MUNDIAL<br /><b>AGENDA</b></span>
+      </a>
+      <nav class="topnav" aria-label="Navegación principal">
+        <a href="#partidos">Partidos</a>
+        <a href="#canales">Cómo verlo</a>
+        <button class="nav-button" id="open-sources" type="button">Fuentes</button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" id="inicio">
+        <div class="hero-grid" aria-hidden="true"></div>
+        <div class="hero-copy">
+          <p class="eyebrow"><span></span> Canadá · México · Estados Unidos</p>
+          <h1>TODO EL MUNDIAL.<br /><strong>UN SOLO LUGAR.</strong></h1>
+          <p class="hero-description">
+            Los 104 partidos, en orden y con hora argentina. Sabé dónde ver cada
+            cruce sin perderte entre señales y plataformas.
+          </p>
+          <div class="hero-actions">
+            <a class="primary-button" href="#partidos">Ver calendario completo</a>
+            <button class="ghost-button" id="show-argentina" type="button">
+              Seguir a Argentina
+            </button>
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <p class="card-label">CUENTA REGRESIVA</p>
+          <div class="countdown" id="countdown">
+            <div><b>--</b><span>DÍAS</span></div>
+            <div><b>--</b><span>HORAS</span></div>
+            <div><b>--</b><span>MIN</span></div>
+          </div>
+          <div class="opening-match">
+            <p>PARTIDO INAUGURAL</p>
+            <div class="opening-teams">
+              <span>México</span>
+              <i>VS</i>
+              <span>Sudáfrica</span>
+            </div>
+            <small>Jueves 11 JUN · 16:00 hs</small>
+          </div>
+        </aside>
+      </section>
+
+      <section class="ticker" aria-label="Datos destacados">
+        <div><b>104</b><span>PARTIDOS</span></div>
+        <div><b>48</b><span>SELECCIONES</span></div>
+        <div><b>16</b><span>SEDES</span></div>
+        <div><b>39</b><span>DÍAS</span></div>
+        <div class="ticker-note"><span>HORARIOS</span><b>ARGENTINA UTC-3</b></div>
+      </section>
+
+      <section class="argentina-section section-shell">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow dark"><span></span> CAMPEÓN DEFENSOR</p>
+            <h2>EL CAMINO DE<br /><strong>ARGENTINA</strong></h2>
+          </div>
+          <p>Grupo J · Primera fase confirmada</p>
+        </div>
+        <div class="argentina-grid" id="argentina-grid"></div>
+      </section>
+
+      <section class="coverage-section" id="canales">
+        <div class="section-shell">
+          <div class="coverage-heading">
+            <div>
+              <p class="eyebrow light"><span></span> TRANSMISIÓN EN ARGENTINA</p>
+              <h2>¿DÓNDE<br /><strong>LO MIRO?</strong></h2>
+            </div>
+            <p>
+              Tenés cobertura completa por TV paga y streaming. Algunas señales
+              también ofrecen una selección de partidos.
+            </p>
+          </div>
+          <div class="coverage-primary" id="coverage-primary"></div>
+          <div class="coverage-secondary" id="coverage-secondary"></div>
+          <p class="coverage-footnote">
+            Las grillas selectivas pueden actualizarse. En cada partido mostramos
+            las opciones completas y las señales abiertas confirmadas.
+          </p>
+        </div>
+      </section>
+
+      <section class="schedule-section section-shell" id="partidos">
+        <div class="schedule-heading">
+          <div>
+            <p class="eyebrow dark"><span></span> FIXTURE COMPLETO</p>
+            <h2>LOS <strong>104</strong><br />PARTIDOS</h2>
+          </div>
+          <p id="results-summary">Mostrando todos los encuentros</p>
+        </div>
+
+        <div class="filter-panel">
+          <label class="search-box">
+            <span aria-hidden="true"></span>
+            <input
+              id="search-input"
+              type="search"
+              placeholder="Buscar selección, sede o canal..."
+              autocomplete="off"
+            />
+          </label>
+          <label class="select-wrap">
+            <span>ETAPA</span>
+            <select id="stage-filter">
+              <option value="all">Todo el torneo</option>
+              <option value="group">Fase de grupos</option>
+              <option value="r32">Dieciseisavos</option>
+              <option value="r16">Octavos</option>
+              <option value="qf">Cuartos</option>
+              <option value="sf">Semifinales</option>
+              <option value="third">Tercer puesto</option>
+              <option value="final">Final</option>
+            </select>
+          </label>
+          <label class="select-wrap">
+            <span>CANAL</span>
+            <select id="channel-filter">
+              <option value="all">Todos los canales</option>
+              <option value="DSports">DSports</option>
+              <option value="Paramount+">Paramount+</option>
+              <option value="DGO">DGO</option>
+              <option value="Flow">Flow</option>
+              <option value="Telefe">Telefe</option>
+              <option value="TV Pública">TV Pública</option>
+            </select>
+          </label>
+          <button class="argentina-filter" id="argentina-filter" type="button">
+            Solo Argentina
+          </button>
+          <button class="clear-filter" id="clear-filter" type="button">
+            Limpiar
+          </button>
+        </div>
+
+        <div class="schedule-list" id="schedule-list"></div>
+        <div class="empty-state" id="empty-state" hidden>
+          <b>No encontramos partidos</b>
+          <p>Probá con otra búsqueda o limpiá los filtros.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-main">
+        <div class="brand footer-brand">
+          <span class="brand-mark">26</span>
+          <span>MUNDIAL<br /><b>AGENDA</b></span>
+        </div>
+        <p>
+          Agenda informativa no oficial. Horarios de Argentina (UTC-3). La
+          programación puede cambiar.
+        </p>
+        <button class="nav-button" id="open-sources-footer" type="button">
+          Ver fuentes y actualización
+        </button>
+      </div>
+      <p class="footer-instagram">Instagram: <b>@ARIASNACHO__</b></p>
+    </footer>
+
+    <dialog class="detail-dialog" id="match-dialog">
+      <button class="dialog-close" data-close-dialog type="button" aria-label="Cerrar">
+        ×
+      </button>
+      <div id="match-detail"></div>
+    </dialog>
+
+    <dialog class="sources-dialog" id="sources-dialog">
+      <button class="dialog-close" data-close-sources type="button" aria-label="Cerrar">
+        ×
+      </button>
+      <p class="card-label">INFORMACIÓN Y FUENTES</p>
+      <h2>Agenda verificada</h2>
+      <p>
+        Fixture actualizado con el calendario oficial de FIFA. La información
+        de señales corresponde a Argentina y fue revisada el 30 de mayo de 2026.
+      </p>
+      <div class="sources-list">
+        <a
+          href="https://digitalhub.fifa.com/asset/4b5d4417-3343-4732-9cdf-14b6662af407/FWC26-Match-Schedule_English.pdf"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <b>FIFA</b>
+          <span>Fixture oficial actualizado el 10 de abril de 2026</span>
+        </a>
+        <a
+          href="https://www.paramount.com/news/beginning-june-1-the-fifa-world-cup-2026tm-streams-on-paramount-in-latin-america"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <b>Paramount</b>
+          <span>Comunicado oficial: los 104 partidos por Paramount+</span>
+        </a>
+        <a
+          href="https://dtv-cms-prd.s3.amazonaws.com/AR_%28PDF%29/faq-mundial-2026-light.html"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <b>DIRECTV</b>
+          <span>FAQ oficial: los 104 partidos por DSports y DGO</span>
+        </a>
+        <a
+          href="https://www.tvpublica.com.ar/post/el-gobierno-anuncio-que-el-mundial-2026-se-transmitira-en-tv-publica"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <b>TV Pública</b>
+          <span>Confirmación oficial de los partidos de Argentina</span>
+        </a>
+        <a
+          href="https://www.ellitoral.com/deportes/ahora-hoy-dondever-tv-streaming-canal-flow-dsports-paramount-disney-espn-tycsports-telefe-argentina-mundial-partidos_0_dHgOjkDkms.amp.html"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <b>El Litoral</b>
+          <span>Grilla reportada el 27 de mayo de 2026</span>
+        </a>
+      </div>
+    </dialog>
+
+    <script src="app.js"></script>
+  </body>
+</html>
